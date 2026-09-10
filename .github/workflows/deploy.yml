@@ -29,10 +29,12 @@ jobs:
         run: |
           mkdir -p deploy
           cp -r .next/standalone/. deploy/
-          mkdir -p deploy/.next
-          cp -r .next/static deploy/.next/static
-          cp -r public deploy/public
+          rm -rf deploy/.next/static deploy/public
+          cp -r .next/static deploy/.next/
+          cp -r public deploy/
           echo "GOOGLE_SHEETS_WEBHOOK_URL=${{ secrets.GOOGLE_SHEETS_WEBHOOK_URL }}" > deploy/.env
+          echo "PORT=3000" >> deploy/.env
+          echo "HOSTNAME=0.0.0.0" >> deploy/.env
 
       - name: Ensure remote directory exists
         uses: appleboy/ssh-action@v1.0.3
