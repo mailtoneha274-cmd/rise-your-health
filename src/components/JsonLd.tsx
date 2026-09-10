@@ -12,7 +12,6 @@ export default function JsonLd() {
     image: "https://riseyourhealthh.com/logo-color.png",
     description:
       "Rise Your Health provides The PCOS Rebalance Protocol — a structured 4-month clinical and lifestyle protocol designed for sustainable hormone balance, menstrual cycle regularity, and metabolic health.",
-    telephone: "+91-7091899035",
     email: "admin@riseyourhealthh.com",
     priceRange: "$$",
     medicalSpecialty: [
@@ -28,7 +27,6 @@ export default function JsonLd() {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+91-7091899035",
         contactType: "Customer Support",
         email: "admin@riseyourhealthh.com",
         availableLanguage: ["English", "Hindi"],

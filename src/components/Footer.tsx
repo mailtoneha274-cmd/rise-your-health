@@ -110,12 +110,6 @@ export default function Footer() {
             >
               admin@riseyourhealthh.com
             </a>
-            <a
-              href="tel:+917091899035"
-              className="font-sans text-sm text-[#475569] hover:text-[#287417] transition-colors"
-            >
-              +91 70918 99035
-            </a>
             <button
               type="button"
               onClick={openBookingModal}
