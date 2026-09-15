@@ -48,7 +48,7 @@ jobs:
       - name: Deploy over SSH (rsync)
         uses: burnett01/rsync-deployments@7.0.2
         with:
-          switches: -avz --delete --exclude 'tmp'
+          switches: -avz --delete --exclude 'tmp' --exclude 'node_modules'
           path: deploy/
           remote_path: ${{ secrets.APP_PATH }}
           remote_host: ${{ secrets.SSH_HOST }}
@@ -64,5 +64,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            cd ${{ secrets.APP_PATH }}
+            npm install --production
             mkdir -p ${{ secrets.APP_PATH }}/tmp
             touch ${{ secrets.APP_PATH }}/tmp/restart.txt
