@@ -48,7 +48,7 @@ jobs:
       - name: Deploy over SSH (rsync)
         uses: burnett01/rsync-deployments@7.0.2
         with:
-          switches: -avz --delete
+          switches: -avz --delete --exclude 'tmp'
           path: deploy/
           remote_path: ${{ secrets.APP_PATH }}
           remote_host: ${{ secrets.SSH_HOST }}
