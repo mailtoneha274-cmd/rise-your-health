@@ -5,7 +5,6 @@ import SmoothScroll from "@/components/SmoothScroll";
 import { BookingModalProvider } from "@/context/BookingModalContext";
 import BookingModal from "@/components/BookingModal";
 import JsonLd from "@/components/JsonLd";
-import MetaPixel from "@/components/MetaPixel";
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -117,7 +116,6 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className="min-h-full font-sans bg-black text-white selection:bg-[#287417] selection:text-white">
-        <MetaPixel />
         <BookingModalProvider>
           <SmoothScroll>{children}</SmoothScroll>
           <BookingModal />
