@@ -32,7 +32,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://riseyourhealthh.com"),
   title: {
-    default: "Rise Your Health | The PCOS Rebalance Protocol — 16 Weeks to Hormonal & Metabolic Wellness",
+    default:
+      "Rise Your Health | The PCOS Rebalance Protocol — 16 Weeks to Hormonal & Metabolic Wellness",
     template: "%s | Rise Your Health",
   },
   description:
@@ -63,7 +64,8 @@ export const metadata: Metadata = {
     canonical: "https://riseyourhealthh.com",
   },
   openGraph: {
-    title: "Rise Your Health | The PCOS Rebalance Protocol — 16 Weeks to Better Hormonal & Metabolic Health",
+    title:
+      "Rise Your Health | The PCOS Rebalance Protocol — 16 Weeks to Better Hormonal & Metabolic Health",
     description:
       "A structured 4-month clinical & lifestyle protocol designed to address underlying hormonal and metabolic drivers of PCOS/PCOD with personalized nutrition, movement, and care squad support.",
     url: "https://riseyourhealthh.com",
@@ -117,10 +119,7 @@ export default function RootLayout({
         <JsonLd />
 
         {/* Meta Pixel Code */}
-        <Script
-          id="meta-pixel"
-          strategy="afterInteractive"
-        >
+        <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -134,12 +133,11 @@ export default function RootLayout({
             fbq('init', '1648413880066435');
             fbq('track', 'PageView');
           `}
-        />
+        </Script>
         {/* End Meta Pixel Code */}
       </head>
 
       <body className="min-h-full font-sans bg-black text-white selection:bg-[#287417] selection:text-white">
-
         {/* Meta Pixel NoScript Code */}
         <noscript>
           <img
