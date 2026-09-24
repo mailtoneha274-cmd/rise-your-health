@@ -1,60 +1,32 @@
-"use client";
-
-import { useEffect } from "react";
-
-declare global {
-  interface Window {
-    fbq: (...args: any[]) => void;
-    _fbq?: Window["fbq"];
-  }
-}
+import Script from "next/script";
 
 export default function MetaPixel() {
-  useEffect(() => {
-    // Prevent duplicate Pixel initialization
-    if (window.fbq && (window.fbq as any).__metaPixelInitialized) {
-      return;
-    }
-
-    const f = window;
-    const b = document;
-    const e = "script";
-    const v = "https://connect.facebook.net/en_US/fbevents.js";
-
-    if (!f.fbq) {
-      const fbq = (...args: any[]) => {
-        if ((fbq as any).callMethod) {
-          (fbq as any).callMethod.apply(fbq, args);
-        } else {
-          (fbq as any).queue.push(args);
-        }
-      };
-
-      (fbq as any).push = fbq;
-      (fbq as any).loaded = true;
-      (fbq as any).version = "2.0";
-      (fbq as any).queue = [];
-      (fbq as any).__metaPixelInitialized = true;
-
-      f.fbq = fbq;
-      f._fbq = fbq;
-
-      const t = b.createElement(e) as HTMLScriptElement;
-      t.async = true;
-      t.src = v;
-
-      const s = b.getElementsByTagName(e)[0];
-
-      if (s && s.parentNode) {
-        s.parentNode.insertBefore(t, s);
-      } else {
-        b.head.appendChild(t);
-      }
-    }
-
-    window.fbq("init", "1648413880066435");
-    window.fbq("track", "PageView");
-  }, []);
-
-  return null;
+  return (
+    <>
+      <Script id="meta-pixel" strategy="afterInteractive">
+        {`
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1648413880066435');
+          fbq('track', 'PageView');
+        `}
+      </Script>
+      <noscript>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          src="https://www.facebook.com/tr?id=1648413880066435&ev=PageView&noscript=1"
+          alt=""
+        />
+      </noscript>
+    </>
+  );
 }
